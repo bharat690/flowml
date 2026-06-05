@@ -1,0 +1,47 @@
+# ==========================
+# FRONTEND
+# ==========================
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ==========================
+# BACKEND
+# ==========================
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/uploads/
+backend/exports/
+backend/models/
+
+# ==========================
+# PYTHON
+# ==========================
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# ==========================
+# ENV FILES
+# ==========================
+.env
+.env.local
+
+# ==========================
+# LOGS
+# ==========================
+*.log
+
+# ==========================
+# IDE
+# ==========================
+.vscode/
+.idea/
+
+# ==========================
+# OS
+# ==========================
+.DS_Store
+Thumbs.db
