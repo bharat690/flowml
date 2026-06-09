@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from app.api.routes import upload, train, export, workflow
+from app.api.routes import upload, train, export, workflow,clean
 from app.core.config import settings
 from app.core.database import init_db
 
@@ -22,6 +22,7 @@ app.add_middleware(
 )
 
 app.include_router(upload.router, prefix="/api/upload", tags=["Upload"])
+app.include_router(clean.router, prefix="/api/clean", tags=["Clean"])
 app.include_router(train.router, prefix="/api/train", tags=["Train"])
 app.include_router(export.router, prefix="/api/export", tags=["Export"])
 app.include_router(workflow.router, prefix="/api/workflow", tags=["Workflow"])

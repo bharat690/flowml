@@ -1,20 +1,12 @@
 from fastapi import UploadFile,APIRouter, File 
 import os 
 import pandas as pd
+from app.ml_engine.nodes.upload_node import data_profile
 
 router  = APIRouter()
 UPLOAD_FOLDER = "uploads"
 
 os.makedirs(UPLOAD_FOLDER, exist_ok = True ) 
-
-def data_profile(df):
-    return{
-        "rows" : len(df),
-        "columns" : len(df.columns),
-        "column_names" : list(df.columns),
-        "data_types":df.dtypes.astype(str).to_dict()   
-    }
-    
 
 @router.post("/")
 async def upload_csv(file:UploadFile = File(...)):
