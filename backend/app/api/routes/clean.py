@@ -24,5 +24,8 @@ async def clean_csc(session_id : str ) :
 
        result = clean_dataset(file_path)
        sessions[session_id]["clean_report"] = result
+       sessions[session_id]["steps_run"].append("clean")
+
+     
        return result 
           

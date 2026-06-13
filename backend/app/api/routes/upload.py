@@ -27,7 +27,8 @@ async def upload_csv(file:UploadFile = File(...)):
       session_id = str(uuid.uuid4())
       sessions[session_id] = {
            "file_path" : file_path,
-           "profile" : profile
+           "profile" : profile,
+           "steps_run" : ["upload"]
 
       }
       return {
