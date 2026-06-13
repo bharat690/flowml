@@ -2,12 +2,20 @@ from fastapi import APIRouter , HTTPException
 from app.ml_engine.nodes.clean_node import clean_dataset 
 import os 
 from app.core.config import settings
+from app.core.session import sessions
 
 router = APIRouter() 
 
 @router.post("/")
-async def clean_csc(filename : str ) : 
-       file_path = os.path.join(settings.UPLOAD_FOLDER, filename)
+async def clean_csc(session_id : str ) : 
+       
+       if session_id not in sessions:
+        raise HTTPException(
+             status_code = 404 , 
+             detail = "session not found"
+        )
+       file_path = sessions[session_id]["file_path"]
+
        if not os.path.exists(file_path):
         raise HTTPException(
              status_code = 404,
