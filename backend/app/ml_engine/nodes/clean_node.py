@@ -15,12 +15,14 @@ def clean_dataset(file_path):
       else:
          df[column] = df[column].fillna(df[column].mode()[0])
     
-    print(df.dtypes)
 
     return {
-        "original_rows": original_rows,
-        "duplicates_removed": duplicates_removed,
-        "rows_after_cleaning": rows_after_cleaning,
-        "missing_values" : missing_values
+     "cleaned_df": df,
+     "report": {
+         "original_rows": original_rows,
+         "duplicates_removed": duplicates_removed,
+         "rows_after_cleaning": rows_after_cleaning,
+         "missing_values": missing_values
+      }
     }
         

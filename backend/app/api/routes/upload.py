@@ -18,7 +18,7 @@ async def upload_csv(file:UploadFile = File(...)):
                 detail = "please upload a csv file"
           )
       
-      file_path = os.path.join(settings.UPLOAD_FOLDER,file.filename)
+      file_path = os.path.join(settings.UPLOAD_FOLDER,"raw",file.filename)
       
       with open(file_path,"wb")as buffer:
           buffer.write(await file.read())
