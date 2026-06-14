@@ -19,11 +19,21 @@ async def upload_csv(file:UploadFile = File(...)):
           )
       
       file_path = os.path.join(settings.UPLOAD_FOLDER,"raw",file.filename)
+         
       
       with open(file_path,"wb")as buffer:
           buffer.write(await file.read())
-      df = pd.read_csv(file_path) 
-      profile = data_profile(df)
+
+      try:  
+       df = pd.read_csv(file_path)
+       profile = data_profile(df)
+
+      except Exception: 
+       raise HTTPException(
+            status_code = 400, 
+            detail = "Invalid CSV structure"
+       )
+
       session_id = str(uuid.uuid4())
       sessions[session_id] = {
            "file_path" : file_path,

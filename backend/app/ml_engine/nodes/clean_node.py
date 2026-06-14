@@ -14,6 +14,7 @@ def clean_dataset(file_path):
          df[column] = df[column].fillna(df[column].median())
       else:
          df[column] = df[column].fillna(df[column].mode()[0])
+         df[column] = df[column].str.strip().str.lower()
     
 
     return {
